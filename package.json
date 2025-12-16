@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "shirevote. prototype voting platform",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "serve"
+    "start": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,5 @@
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "mongoose": "^9.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.11"
   }
 }
