@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 node_module
 package-lock.json
 .env.development
 .env.production
-=======
 # Logs
 logs
 *.log
@@ -143,4 +141,3 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
->>>>>>> 38d010374d5bafa670ac3442d92728b5d6d057a6
