@@ -10,10 +10,10 @@ import {
 } from "../controllers/auth-controller.js"
 
 
-
+import { verifyRefreshToken } from "../middlewares/refreshToken.js"
 const router = express.Router()
 
-router.post("/refresh_access_token", refresh_request_controller)
+router.post("/refresh_access_token", verifyRefreshToken, refresh_request_controller)
 router.post("/register", register_controller)
 router.post("/login", login_controller)
 router.post("/request_code", request_reset_code_controller
