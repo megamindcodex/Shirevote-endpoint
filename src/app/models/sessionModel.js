@@ -1,16 +1,31 @@
 import mongoose from "mongoose"
-const {Schema} = mongoose
+const { Schema } = mongoose
 
 const sessionSchema = new Schema({
-  userId: String,
-  refreshToken: String,
+  userId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    index: true
+  },
+  refreshToken: {
+    type: String,
+    required: true,
+    unique: true
+  },
   device: String,
   ip: String,
-  createdAt: {
-  type: Date,
-  default: Date.now,
-  expires: 60 * 60 * 24 // 24 hours in seconds or you can just us the '24h' convention. it still works.
-}
-})
+
+  expiresAt: {
+    type: Date,
+    required: true,
+    index: true
+  }
+}, { timestamps: true })
+
+// TTL cleanup (based on expiresAt)
+sessionSchema.index(
+  { expiresAt: 1 },
+  { expireAfterSeconds: 0 }
+)
 
 export const Session = mongoose.model("Session", sessionSchema)
